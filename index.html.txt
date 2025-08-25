@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tug'ilgan kun muborak ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      text-align: center;
+      z-index: 2;
+      animation: fadeIn 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flower, .heart {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); }
+      to { transform: translateY(-10vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Tug'ilgan kuning muborak, Azizam! 🌹❤️</h1>
+
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Sizning brauzeringiz musiqa ijro etishni qo‘llab-quvvatlamaydi.
+  </audio>
+
+  <script>
+    const symbols = ["🌸","🌹","💐","❤️","💖","💘"];
+    function createSymbol() {
+      const div = document.createElement("div");
+      div.className = Math.random() > 0.5 ? "flower" : "heart";
+      div.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      div.style.left = Math.random() * 100 + "vw";
+      div.style.fontSize = (Math.random() * 30 + 20) + "px";
+      div.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(div);
+
+      setTimeout(() => { div.remove(); }, 10000);
+    }
+    setInterval(createSymbol, 500);
+  </script>
+</body>
+</html>
