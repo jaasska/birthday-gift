@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tug'ilgan kun muborak ❤️</title>
+  <title>Одно лишь твоё существование — уже счастье.❤️</title>
+
+  <!-- Chiroyli qo'lda yozilgan shrift -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -17,11 +21,13 @@
     }
 
     h1 {
+      font-family: 'Great Vibes', cursive;
       color: white;
-      font-size: 2.5rem;
+      font-size: 3rem;
       text-align: center;
       z-index: 2;
       animation: fadeIn 3s ease-in-out forwards;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     }
 
     @keyframes fadeIn {
@@ -40,14 +46,58 @@
       from { transform: translateY(100vh) rotate(0deg); }
       to { transform: translateY(-10vh) rotate(360deg); }
     }
+
+    /* Tugma dizayni */
+    #play-btn {
+      position: absolute;
+      bottom: 30px;
+      padding: 14px 30px;
+      font-size: 20px;
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    #play-btn:hover {
+      transform: scale(1.1);
+      background: #ff1e4d;
+    }
+
+    #play-btn.fade-out {
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; transform: scale(0.8); }
+    }
   </style>
 </head>
 <body>
-  <h1>🎉 Tug'ilgan kuning muborak, Azizam! 🌹❤️</h1>
+  <h1>Сентябрь стучится дождём по стеклу,
+Прощай, тёплое лето, что было в плену.
+Ты — как ответ на немой календарь,
+Твой день сияет, как осени старт.
 
-  <audio autoplay loop>
+Не заметишь, как листья закружат в пути,
+Но мгновенье твоё невозможно забыть.
+Словно тайна, что дарит душе оберег,
+Ты — начало историй, что пишем навек.</h1>
+
+  <!-- Musiqa -->
+  <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
+    Sizning brauzeringiz musiqa ijro etishni qo‘llab-quvvatlamaydi.
   </audio>
+
+  <!-- Tugma -->
+  <button id="play-btn" onclick="startMusic()">С музыкой — ещё полнее и теплее.</button>
 
   <script>
     const symbols = ["🌸","🌹","💐","❤️","💖","💘"];
@@ -63,8 +113,14 @@
       setTimeout(() => { div.remove(); }, 10000);
     }
     setInterval(createSymbol, 500);
+
+    function startMusic() {
+      const music = document.getElementById("bg-music");
+      music.play();
+      const btn = document.getElementById("play-btn");
+      btn.classList.add("fade-out");
+      setTimeout(() => { btn.style.display = "none"; }, 1000);
+    }
   </script>
 </body>
 </html>
-
-
