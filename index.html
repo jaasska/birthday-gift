@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Одно лишь твоё существование — уже счастье.❤️</title>
 
-  <!-- Klassik maktub uslubidagi shriftlar -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <!-- Qo'l yozuvi uslubidagi, Cyrillic-ni qo'llaydigan shriftlar -->
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Bad+Script&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -17,9 +17,13 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background: linear-gradient(120deg, #f6d365, #fda085);
-      background-size: 400% 400%;
-      animation: gradientShift 20s ease infinite;
+
+      /* Pergament tekstura + yumshoq kuzgi gradient */
+      background:
+        url('https://www.transparenttextures.com/patterns/aged-paper.png'),
+        linear-gradient(120deg, #f3e5ab, #e9d49a, #d9b87a);
+      background-size: 600px, 400% 400%;
+      animation: gradientShift 25s ease infinite;
     }
 
     @keyframes gradientShift {
@@ -28,15 +32,16 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Asosiy qo'l yozuvi — Marck Script */
     h1 {
-      font-family: 'Homemade Apple', cursive;
-      color: white;
-      font-size: clamp(1.3rem, 4.5vw, 2.1rem);
+      font-family: 'Marck Script', 'Bad Script', 'Caveat', cursive;
+      color: #3b2f1c;
+      font-size: clamp(1.35rem, 4.5vw, 2.1rem); /* telefonda qulay */
       text-align: center;
       line-height: 1.8;
       padding: 0 14px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.25);
-      font-weight: 400;
+      text-shadow: 1px 1px 4px rgba(255,255,255,0.6);
+      font-weight: 400; /* qalin emas */
     }
 
     .line {
@@ -44,53 +49,42 @@
       transform: translateY(20px);
       animation: fadeInLine 1.5s forwards;
     }
-
     @keyframes fadeInLine {
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Kuzgi barglar */
     .leaf {
       position: absolute;
       top: -10vh;
-      color: rgba(255,255,255,0.8);
+      color: rgba(139,69,19,0.8);
       font-size: 1.5rem;
       animation: fall linear infinite;
+      pointer-events: none;
     }
-
     @keyframes fall {
       to { transform: translateY(110vh) rotate(360deg); }
     }
 
-    /* Tugma */
+    /* Musiqa tugmasi (faqat yoqish) */
     #play-btn {
       position: absolute;
       bottom: 30px;
       padding: 12px 28px;
       font-size: 18px;
-      background: #ff4d6d;
+      background: #a47148;
       color: white;
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      font-family: 'Allura', cursive;
+      font-family: 'Bad Script', cursive; /* tugmada ham qo'l yozuvi */
       font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, background 0.3s ease;
     }
-
-    #play-btn:hover {
-      transform: scale(1.1);
-      background: #ff1e4d;
-    }
-
-    #play-btn.fade-out {
-      animation: fadeOut 1s forwards;
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; transform: scale(0.8); }
-    }
+    #play-btn:hover { transform: scale(1.1); background: #8c5a32; }
+    #play-btn.fade-out { animation: fadeOut 1s forwards; }
+    @keyframes fadeOut { from {opacity:1} to {opacity:0; transform:scale(0.8)} }
   </style>
 </head>
 <body>
@@ -102,7 +96,7 @@
     Sizning brauzeringiz musiqa ijro etishni qo‘llab-quvvatlamaydi.
   </audio>
 
-  <!-- Tugma -->
+  <!-- Tugma (faqat yoqish) -->
   <button id="play-btn" onclick="startMusic()">С музыкой — ещё теплее 🍁</button>
 
   <script>
@@ -119,7 +113,6 @@
     ];
 
     const poemEl = document.getElementById("poem");
-
     lines.forEach((line, i) => {
       const span = document.createElement("div");
       span.className = "line";
@@ -128,7 +121,7 @@
       poemEl.appendChild(span);
     });
 
-    // Barglar
+    // Kuzgi barglar
     const leaves = ["🍂","🍁","🍃"];
     function createLeaf() {
       const leaf = document.createElement("div");
@@ -142,7 +135,7 @@
     }
     setInterval(createLeaf, 700);
 
-    // Musiqa
+    // Musiqa — faqat yoqish
     function startMusic() {
       const music = document.getElementById("bg-music");
       music.play();
@@ -153,4 +146,3 @@
   </script>
 </body>
 </html>
-
